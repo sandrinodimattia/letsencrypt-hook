@@ -80,6 +80,16 @@ function createCertificate(emit, context, callback) {
       return callback(err);
     }
 
-    return callback(null, privateKey, certificate);
+    if (!context.options.publishProvider) {
+      return callback(null, privateKey, certificate);
+    }
+
+    certificateCreated(emit, { domains: context.domains, privateKey, certificate }, (err) => {
+      return callback(err, privateKey, certificate);
+    });
   });
+}
+
+function certificateCreated(emit, context, callback) {
+  emit('certificate:created', context, callback);
 }
