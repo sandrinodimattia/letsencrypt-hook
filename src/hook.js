@@ -9,9 +9,12 @@ export default class LetsEncryptHook extends EventEmitter {
     this.options = options;
     this.logger = this.createLogger(options.logger);
 
-    // Attach the storage provider.
+    // Attach the providers.
     if (this.options.storageProvider) {
       this.options.storageProvider(this.on.bind(this), this.logger);
+    }
+    if (this.options.publishProvider) {
+      this.options.publishProvider(this.on.bind(this), this.logger);
     }
   }
 
