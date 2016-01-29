@@ -1,6 +1,6 @@
 {
   "name": "letsencrypt-hook",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple hooks for the LetsEncrypt certificate registration process!",
   "main": "lib/index.js",
   "scripts": {
